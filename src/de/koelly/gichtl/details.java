@@ -105,6 +105,21 @@ public class details extends Activity{
     }
     
     @Override
+    public void onPause(){
+    	super.onDestroy();
+    	Log.d("ListThem","onDestroy aufgerufen");
+    	dbHelper.close();
+    }
+
+    
+    public void onResume(){
+    	super.onDestroy();
+    	Log.d("ListThem","onDestroy aufgerufen");
+    	dbHelper.openDataBase();
+    }
+
+    
+    @Override
     public void onDestroy(){
     	super.onDestroy();
     	Log.d("details","onDestroy aufgerufen");
