@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/home_root"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white">
+    
+	<include layout="@layout/titlebar"/>
+
+<!--	<ListView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--		android:id="@+id/ListView01" -->
+<!--		android:layout_width="fill_parent" -->
+<!--		android:layout_height="wrap_content"-->
+<!--		style="@style/listViewStyle">-->
+<!--	</ListView>-->
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:stretchColumns="*"
+    android:gravity="center">
+    
+    <TableRow
+    android:paddingTop="10dp"
+	android:layout_width="fill_parent" 
+    android:layout_height="wrap_content">
+
+
+		<ImageView 
+			android:id="@+id/meat" 
+			android:layout_width="90dp" 
+			android:layout_height="90dp"
+			android:cropToPadding="false"
+	 		android:scaleType="centerInside"
+	 		android:src="@drawable/meat">
+		</ImageView>
+			
+		<ImageView 
+			android:id="@+id/fish" 
+			android:layout_width="90dp" 
+			android:layout_height="90dp"
+			android:cropToPadding="false"
+	 		android:scaleType="centerInside"
+	 		android:src="@drawable/fish">
+		</ImageView>
+	</TableRow>
+	
+	<TableRow
+		android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content">
+    	
+    <TextView 
+		android:text="Fleisch"
+		android:id="@+id/TextView01"
+		android:layout_width="90dp" 
+		android:layout_height="wrap_content"
+ 		android:gravity="center">
+	</TextView>
+	
+	    <TextView 
+		android:text="Fisch"
+		android:id="@+id/TextView01"
+		android:layout_width="90dp" 
+		android:layout_height="wrap_content"
+ 		android:gravity="center">
+	</TextView>
+    	
+    </TableRow>
+
+    <TableRow
+    android:paddingTop="10dp">
+    
+	<ImageView 
+		android:id="@+id/fruit" 
+		android:layout_width="90dp" 
+		android:layout_height="90dp"
+		android:cropToPadding="false"
+ 		android:scaleType="centerInside"
+ 		android:src="@drawable/fruit">
+	</ImageView>
+		
+	<ImageView 
+		android:id="@+id/vegetable" 
+		android:layout_width="90dp" 
+		android:layout_height="90dp"
+		android:cropToPadding="false"
+ 		android:scaleType="centerInside"
+ 		android:src="@drawable/vegetable">
+	</ImageView>
+	
+	</TableRow>	
+	
+	
+		<TableRow
+		android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content">
+    	
+    <TextView 
+		android:text="Obst"
+		android:id="@+id/TextView01"
+		android:layout_width="90dp" 
+		android:layout_height="wrap_content"
+ 		android:gravity="center">
+	</TextView>
+	
+	<TextView 
+		android:text="Gemüse"
+		android:id="@+id/TextView01"
+		android:layout_width="90dp" 
+		android:layout_height="wrap_content"
+ 		android:gravity="center">
+	</TextView>
+    	
+    </TableRow>
+	
+    <TableRow
+    android:paddingTop="10dp">
+    
+   	<ImageView 
+		android:id="@+id/beverage" 
+		android:layout_width="90dp" 
+		android:layout_height="90dp"
+		android:cropToPadding="false"
+ 		android:scaleType="centerInside"
+ 		android:src="@drawable/beverage">
+	</ImageView>
+    
+    <ImageView 
+		android:id="@+id/miscellaneous" 
+		android:layout_width="90dp" 
+		android:layout_height="90dp"
+		android:cropToPadding="false"
+ 		android:scaleType="centerInside"
+ 		android:src="@drawable/sonstiges">
+	</ImageView>
+    
+    </TableRow>
+    
+   	<TableRow
+		android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content">
+    	
+    <TextView 
+		android:text="Getränke"
+		android:id="@+id/TextView01"
+		android:layout_width="90dp" 
+		android:layout_height="wrap_content"
+ 		android:gravity="center">
+	</TextView>
+	
+	<TextView 
+		android:text="Sonstiges"
+		android:id="@+id/TextView01"
+		android:layout_width="90dp" 
+		android:layout_height="wrap_content"
+ 		android:gravity="center">
+	</TextView>
+    	
+    </TableRow>
+	
+</TableLayout>
+
+
+</LinearLayout>
