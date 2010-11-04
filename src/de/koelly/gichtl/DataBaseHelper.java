@@ -163,12 +163,14 @@ public class DataBaseHelper extends SQLiteOpenHelper{
  
     @Override
 	public synchronized void close() {
-    	Log.d("Gichtl: ","DB synchronize aufgerufen... ");
- 
-    	    if(myDataBase != null)
+    	Log.d("Gichtl: ","DB close aufgerufen... ");
+    	super.close();
+    	    if(myDataBase != null){
     		    myDataBase.close();
+    		    Log.d("Gichtl: ","... DB close ausgeführt");
+    	    }
  
-    	    super.close();
+    	    
  
 	}
  

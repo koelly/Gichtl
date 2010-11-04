@@ -29,6 +29,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.SQLException;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -105,6 +106,31 @@ public class gichtl extends Activity implements OnClickListener {
 	     ImageView b_search = (ImageView) findViewById(R.id.search);
 	     b_search.setOnClickListener(this);
         
+    }
+    
+    @Override
+    public void onPause(){
+    	super.onPause();
+    	Log.d("Gichtl","onPause aufgerufen");
+    	myDbHelper.close();
+    }
+    
+    @Override
+    public void onResume(){
+    	super.onResume();
+    	Log.d("Gichtl","onResume aufgerufen");
+        try {
+         	myDbHelper.openDataBase();	
+         }catch(SQLException sqle){
+         	throw sqle;
+         }
+    }
+    
+    @Override
+    public void onDestroy(){
+    	super.onDestroy();
+    	Log.d("Gichtl","onDestroy aufgerufen");
+    	myDbHelper.close();
     }
 
     

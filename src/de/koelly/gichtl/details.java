@@ -35,6 +35,7 @@ public class details extends Activity{
 	DataBaseHelper dbHelper = new DataBaseHelper(this);
 	String nameOfMeal;
 	private String TABLE_NAME = "food";
+	Cursor cursor;
 //	private static String[] FROM = {" * "};
 //	private static String ORDER_BY = "";
 //	private static String SELECTION = "name = ?";
@@ -46,7 +47,7 @@ public class details extends Activity{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
 		Log.d("Gichtl","nameOfMEal: " + nameOfMeal);
 		//Log.d("Gichtl","SELECTION_ARGS: " + SELECTION_ARGS[0]);
-		Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE name = \"" + nameOfMeal + "\";" , null);
+		cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE name = \"" + nameOfMeal + "\";" , null);
 		startManagingCursor(cursor);
 		cursor.moveToFirst();
 		Log.d("Gichtl", "Cursor hat Elemnte: " + cursor.getCount());
@@ -64,7 +65,7 @@ public class details extends Activity{
         Bundle bundle = this.getIntent().getExtras();
         nameOfMeal = bundle.getString("name");
         
-        Cursor cursor = getDetails();
+        cursor = getDetails();
         int uric_acid = cursor.getInt(3);
         int average_portion = cursor.getInt(4);
         
@@ -101,6 +102,12 @@ public class details extends Activity{
 
         this.setTitle(nameOfMeal);
         dbHelper.close();
-
+    }
+    
+    @Override
+    public void onDestroy(){
+    	super.onDestroy();
+    	Log.d("details","onDestroy aufgerufen");
+    	dbHelper.close();
     }
 }
