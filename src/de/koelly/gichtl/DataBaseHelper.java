@@ -33,7 +33,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class DataBaseHelper extends SQLiteOpenHelper{
 	 
@@ -61,8 +60,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
      */
     public void forceNewDB(){
     	File file = new File(DB_PATH + DB_NAME);
-    	boolean deleted = file.delete();
-    	Log.d("DB Deleted?",""+deleted);
+    	file.delete();
     	
     	this.getReadableDatabase();
     	try {
@@ -77,7 +75,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
      * Creates a empty database on the system and rewrites it with your own database.
      */
     public void createDataBase() throws IOException{
-    	Log.d("Gichtl: ","DB createDataBase aufgerufen... ");
      	boolean dbExist = checkDataBase();
     	 
     	if(dbExist){
@@ -102,7 +99,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
      * @return true if it exists, false if it doesn't
      */
     private boolean checkDataBase(){
-    	Log.d("Gichtl: ","DB checkDataBase aufgerufen... ");
 
     	SQLiteDatabase checkDB = null;
     	try{
@@ -126,7 +122,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
      * This is done by transfering bytestream.
      * */
     private void copyDataBase() throws IOException{
-    	Log.d("Gichtl: ","DB copyDatabase aufgerufen... ");
 
  
     	//Open your local db as the input stream
@@ -153,8 +148,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     }
  
     public void openDataBase() throws SQLException{
-    	Log.d("Gichtl: ","DB openDataBase aufgerufen... ");
-
     	//Open the database
         String myPath = DB_PATH + DB_NAME;
     	myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
@@ -163,11 +156,9 @@ public class DataBaseHelper extends SQLiteOpenHelper{
  
     @Override
 	public synchronized void close() {
-    	Log.d("Gichtl: ","DB close aufgerufen... ");
     	super.close();
     	    if(myDataBase != null){
     		    myDataBase.close();
-    		    Log.d("Gichtl: ","... DB close ausgeführt");
     	    }
  
     	    
@@ -176,16 +167,12 @@ public class DataBaseHelper extends SQLiteOpenHelper{
  
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		Log.d("Gichtl: ","DB onCreate aufgerufen... ");
 
 	}
  
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		Log.d("Gichtl: ","DB onUpgrade aufgerufen... ");
-		if (oldVersion < newVersion)
-			Log.d("Gichtl: ","DB Upgrade würde ausgeführt werden...");
- 
+
 	}
 
 }

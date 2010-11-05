@@ -26,7 +26,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -60,7 +59,6 @@ public class MySearchableActivity extends ListActivity{
 		      do{
 		    	  String name = cursor.getString(2);
 		    	  String category = cursor.getString(1);
-		    	  Log.d("Gichtl", "Eintrag aus DB: " + name);
 		    	  tmp[i] = category;
 		    	  results[i++] = name; 
 		      } while (cursor.moveToNext());
@@ -82,7 +80,7 @@ public class MySearchableActivity extends ListActivity{
 	        	  String name = (String) ((TextView) view).getText();
       	  
 	        	  	
-		          Intent i = new Intent(MySearchableActivity.this, details.class);
+		          Intent i = new Intent(MySearchableActivity.this, Details.class);
 		          Bundle bundle = new Bundle();
 		          bundle.putString("name", name);
 		          i.putExtras(bundle);

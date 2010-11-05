@@ -25,7 +25,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -106,7 +105,7 @@ public class ListThem extends ListActivity implements OnClickListener{
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         	//Source: http://www.balistupa.com/blog/2009/08/passing-data-or-parameter-to-another-activity-android/
-        	Intent i = new Intent(ListThem.this, details.class);
+        	Intent i = new Intent(ListThem.this, Details.class);
         	Bundle bundle = new Bundle();
         	bundle.putString("name", names[position]);
         	bundle.putString("table", TABLE_NAME);
@@ -120,21 +119,18 @@ public class ListThem extends ListActivity implements OnClickListener{
     @Override
     public void onPause(){
     	super.onDestroy();
-    	Log.d("ListThem","onDestroy aufgerufen");
     	dbHelper.close();
     }
 
     
     public void onResume(){
     	super.onDestroy();
-    	Log.d("ListThem","onDestroy aufgerufen");
     	dbHelper.openDataBase();
     }
     
     @Override
     public void onDestroy(){
     	super.onDestroy();
-    	Log.d("ListThem","onDestroy aufgerufen");
     	dbHelper.close();
     }
     

@@ -35,16 +35,16 @@
     
     <!-- Right buttons -->
     
-    <ImageView android:id="@+id/title_button_1"
-        android:layout_width="45dip"
-        android:layout_height="45dip"
-        android:gravity="center_vertical"
-        android:layout_toLeftOf="@+id/search"
-        android:layout_alignWithParentIfMissing="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:paddingRight="12dip"
-        android:src="@drawable/ic_title_refresh"/>
+<!--    <ImageView android:id="@+id/title_button_1"-->
+<!--        android:layout_width="45dip"-->
+<!--        android:layout_height="45dip"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:layout_toLeftOf="@+id/search"-->
+<!--        android:layout_alignWithParentIfMissing="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:paddingRight="12dip"-->
+<!--        android:src="@drawable/ic_title_refresh"/>-->
         
         
     <ImageView android:id="@+id/search"
