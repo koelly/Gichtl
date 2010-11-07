@@ -33,6 +33,10 @@
 			android:theme="@android:style/Theme.Dialog">
 		</activity>	
 		
+		<activity android:name=".Preferences"
+			android:label="@string/preferences_title">
+		</activity>	
+		
 		<meta-data android:name="android.app.default_searchable"
                android:value=".MySearchableActivity" />
 		
