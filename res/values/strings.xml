@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, gichtl!</string>
     <string name="app_name">Gichtl</string>
     <string name="details_title">Details</string>
-    <string name="ListThem_title">Übersicht</string>
     <string name="preferences_title">Optionen</string>
     <string name="title">Gichtl</string>
+    
+    <string name="meat">Fleisch</string>
+    <string name="fish">Fisch</string>
+    <string name="fruit">Obst</string>
+    <string name="vegetable">Gemüse</string>
+    <string name="beverage">Getränke</string>
+    <string name="misc">Sonstiges</string>
+    
+    <string name="about">Info</string>
+    <string name="preferences">Einstellungen</string>
+    
+    <string name="title_pref_lang">Sprache</string>
+    <string name="title_pref_select_lang">Sprache wählen</string>
+    <string name="pref_show_in_lang">Einträge in folgender Sprache anzeigen</string>
+    
     
 </resources>

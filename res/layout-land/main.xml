@@ -56,7 +56,7 @@
     	android:layout_height="wrap_content">
     	
 	    <TextView 
-			android:text="Fleisch"
+			android:text="@string/meat"
 			android:id="@+id/TextView01"
 			android:layout_width="90dp" 
 			android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
 		</TextView>
 		
 		    <TextView 
-			android:text="Fisch"
+			android:text="@string/fish"
 			android:id="@+id/TextView01"
 			android:layout_width="90dp" 
 			android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
 		</TextView>
 		
 		<TextView 
-			android:text="Obst"
+			android:text="@string/fruit"
 			android:id="@+id/TextView01"
 			android:layout_width="90dp" 
 			android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
     android:paddingTop="0dp">
 	
 		<TextView 
-			android:text="Gemüse"
+			android:text="@string/vegetable"
 			android:id="@+id/TextView01"
 			android:layout_width="90dp" 
 			android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
 	    	
 	    	
 	    <TextView 
-			android:text="Getränke"
+			android:text="@string/beverage"
 			android:id="@+id/TextView01"
 			android:layout_width="90dp" 
 			android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
 		</TextView>
 		
 		<TextView 
-			android:text="Sonstiges"
+			android:text="@string/misc"
 			android:id="@+id/TextView01"
 			android:layout_width="90dp" 
 			android:layout_height="wrap_content"
