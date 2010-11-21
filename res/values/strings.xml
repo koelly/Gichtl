@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+	<!-- General -->
     <string name="app_name">Gichtl</string>
     <string name="details_title">Details</string>
     <string name="preferences_title">Optionen</string>
     <string name="title">Gichtl</string>
+    <string name="ListThem_title">ListThem</string>
+    <string name="nothing_found">Nichts gefunden!</string>
+    <string name="in_a">In einer</string>
+    <string name="contains">g Portion befinden sich also ca.</string>
+    <string name="mg_of_uricAcid">mg Harnsäure</string>
+    <string name="uricAcid_in_100g">Urinsäure in 100mg:</string>
     
+    
+    
+    <!-- Start -->
     <string name="meat">Fleisch</string>
     <string name="fish">Fisch</string>
     <string name="fruit">Obst</string>
@@ -12,12 +23,22 @@
     <string name="beverage">Getränke</string>
     <string name="misc">Sonstiges</string>
     
+
+    <!-- Menu -->
     <string name="about">Info</string>
     <string name="preferences">Einstellungen</string>
     
+    
+    <!-- Preferences -->
     <string name="title_pref_lang">Sprache</string>
     <string name="title_pref_select_lang">Sprache wählen</string>
     <string name="pref_show_in_lang">Einträge in folgender Sprache anzeigen</string>
     
+    <string name="title_pref_inet">Internet</string>
+    	<string name="allow_analytics">Analytics zulassen</string>
+    	<string name="allow_analytics_detail">Sammeln von anonymisierten Nutzungsprofilen erlauben</string>
     
+    	<string name="allow_ads">Werbung</string>
+    	<string name="allow_ads_detail">Werbung zulassen</string>
+
 </resources>

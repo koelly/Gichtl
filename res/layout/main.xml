@@ -36,6 +36,7 @@
 	 		android:scaleType="centerInside"
 	 		android:src="@drawable/meat">
 		</ImageView>
+
 			
 		<ImageView 
 			android:id="@+id/fish" 

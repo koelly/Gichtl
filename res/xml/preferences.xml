@@ -6,8 +6,26 @@
                         android:title="@string/title_pref_select_lang"
                         android:summary="@string/pref_show_in_lang"
                         android:key="language"
-                        android:defaultValue="german"
+                        android:defaultValue="auto"
                         android:entries="@array/lang"
 						android:entryValues="@array/langValues" />
         </PreferenceCategory>
+
+        <PreferenceCategory
+                android:title="@string/title_pref_inet">
+                <CheckBoxPreference
+                		android:enabled="false"
+                        android:title="@string/allow_analytics"
+                        android:defaultValue="false"
+                        android:summary="@string/allow_analytics_detail"
+                        android:key="allow_analytics" />
+                        
+                <CheckBoxPreference
+                		android:enabled="false"
+                        android:title="@string/allow_ads"
+                        android:defaultValue="false"
+                        android:summary="@string/allow_ads_detail"
+                        android:key="allow_ads" />
+        </PreferenceCategory>
+
 </PreferenceScreen>

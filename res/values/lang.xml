@@ -3,9 +3,11 @@
 	<string-array name="lang">
 		<item>Deutsch</item>
 		<item>English</item>
+		<item>Auto</item>
 	</string-array>
 	<string-array name="langValues">
 		<item>german</item>
 		<item>english</item>
+		<item>auto</item>
 	</string-array>
 </resources>

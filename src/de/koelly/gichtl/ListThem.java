@@ -20,34 +20,56 @@ package de.koelly.gichtl;
  * 
  */
 
+import java.util.Locale;
+
 import android.app.ListActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 
 public class ListThem extends ListActivity implements OnClickListener{
 	DataBaseHelper dbHelper = new DataBaseHelper(this);
 	
 	String category;
-	//private String[] CATEGORY = { tmp_category };
 	private static String TABLE_NAME = "food";
-	//private static String[] FROM = { "name", "uric_acid",};
-	//private static String WHERE = "category = ?";
-	//private static String ORDER_BY = "name ASC";
 	
-	private Cursor getNames(){
+	//TODO Put it in extra class
+	public String getLanguageColumnsName(){
+	      SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+	      String lang = prefs.getString("language", "auto");
+	      String result = "name_en";
+	      
+	      	      
+	      if (lang.equalsIgnoreCase("german")){
+	    	  result =  "name";
+	      } else if(lang.equalsIgnoreCase("english")){
+	    	  result =  "name_en";
+	      } else if(lang.equalsIgnoreCase("auto")){
+	    	  Locale lang_code = Locale.getDefault();
+	    	  if(lang_code.getCountry().equalsIgnoreCase("de")){
+	    		  result =  "name";
+	    	  } 
+	      }
+	      return result;
 		
+	}
+    
+		
+	private Cursor getNames(){
+	    String NAME_COLUMN = getLanguageColumnsName();
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
-		Cursor cursor = db.rawQuery("SELECT \"name\", \"uric_acid\" FROM " + TABLE_NAME + " WHERE category = \"" + category + "\" ORDER BY name ASC;", null);
+		Cursor cursor = db.rawQuery("SELECT " + NAME_COLUMN + ", \"uric_acid\" FROM " + TABLE_NAME + " WHERE category = \"" + category + "\" ORDER BY name ASC;", null);
 		startManagingCursor(cursor);		
 		return cursor;
 	}
@@ -102,7 +124,8 @@ public class ListThem extends ListActivity implements OnClickListener{
        * Handles clicks inside ListView
        */
       lv1.setOnItemClickListener(new OnItemClickListener() {
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        @Override
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         	//Source: http://www.balistupa.com/blog/2009/08/passing-data-or-parameter-to-another-activity-android/
         	Intent i = new Intent(ListThem.this, Details.class);
@@ -123,7 +146,8 @@ public class ListThem extends ListActivity implements OnClickListener{
     }
 
     
-    public void onResume(){
+    @Override
+	public void onResume(){
     	super.onDestroy();
     	dbHelper.openDataBase();
     }

@@ -20,11 +20,15 @@ package de.koelly.gichtl;
  * 
  */
 
+import java.util.Locale;
+
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -34,13 +38,35 @@ public class Details extends Activity{
 	DataBaseHelper dbHelper = new DataBaseHelper(this);
 	String nameOfMeal;
 	private String TABLE_NAME = "food";
+	private String COLUMN_NAME = "";
 	Cursor cursor;
 
+	
+	//TODO Put it in extra class
+	public String getLanguageColumnsName(){
+	      SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+	      String lang = prefs.getString("language", "auto");
+	      String result = "name_en";
+	      
+	      	      
+	      if (lang.equalsIgnoreCase("german")){
+	    	  result =  "name";
+	      } else if(lang.equalsIgnoreCase("english")){
+	    	  result =  "name_en";
+	      } else if(lang.equalsIgnoreCase("auto")){
+	    	  Locale lang_code = Locale.getDefault();
+	    	  if(lang_code.getCountry().equalsIgnoreCase("de")){
+	    		  result =  "name";
+	    	  } 
+	      }
+	      return result;
+		
+	}
 	
 	
 	private Cursor getDetails(){
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
-		cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE name = \"" + nameOfMeal + "\";" , null);
+		cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_NAME + " = \"" + nameOfMeal + "\";" , null);
 		startManagingCursor(cursor);
 		cursor.moveToFirst();
 		db.close();
@@ -56,6 +82,8 @@ public class Details extends Activity{
         
         Bundle bundle = this.getIntent().getExtras();
         nameOfMeal = bundle.getString("name");
+        
+        COLUMN_NAME = getLanguageColumnsName();
         
         cursor = getDetails();
         int uric_acid = cursor.getInt(3);
@@ -87,10 +115,10 @@ public class Details extends Activity{
         rl.setBackgroundColor(bgColor);
 
         TextView tv1 = (TextView) findViewById(R.id.uric_acid);
-        tv1.setText("Harnsäure in 100g:    " + uric_acid + "mg");
+        tv1.setText(this.getString(R.string.uricAcid_in_100g) + "   " + uric_acid + "mg");
         
         TextView tv2 = (TextView) findViewById(R.id.uric_acid_per_portion);
-        tv2.setText("In einer " + average_portion + "g Portion befinden sich also ca. " + uric_acid_per_portion + "mg Harnsäure.");
+        tv2.setText(this.getString(R.string.in_a) +" "+ average_portion + this.getString(R.string.contains) +" "+ uric_acid_per_portion + this.getString(R.string.mg_of_uricAcid));
 
         this.setTitle(nameOfMeal);
         dbHelper.close();

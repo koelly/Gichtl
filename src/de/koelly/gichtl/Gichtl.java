@@ -22,7 +22,6 @@ package de.koelly.gichtl;
 
 import java.io.IOException;
 import de.koelly.gichtl.DataBaseHelper;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -48,6 +47,7 @@ public class Gichtl extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
+        
         final String PREFERENCES = "gichtl.prf";
         SharedPreferences settings = getSharedPreferences(PREFERENCES, 0);
 
@@ -57,14 +57,14 @@ public class Gichtl extends Activity implements OnClickListener {
          * If this is first run, or DB changed: delete crudely the old DB
          */
         boolean firstRun = true;        
-        firstRun = settings.getBoolean("firstRun2", true);
+        firstRun = settings.getBoolean("firstRun3", true);
          if (firstRun){
 
         	 myDbHelper.forceNewDB();
 
 	      
 	        SharedPreferences.Editor settingsEditor = settings.edit();
-	        settingsEditor.putBoolean("firstRun2", false);
+	        settingsEditor.putBoolean("firstRun3", false);
 	        settingsEditor.commit();
          }
          
@@ -114,6 +114,11 @@ public class Gichtl extends Activity implements OnClickListener {
     }
     
     @Override
+    public void onStart(){
+    	super.onStart();
+    }
+    
+    @Override
     public void onPause(){
     	super.onPause();
     	myDbHelper.close();
@@ -135,19 +140,24 @@ public class Gichtl extends Activity implements OnClickListener {
     	myDbHelper.close();
     }
     
-    public boolean onPrepareOptionsMenu(Menu menu) {
+    @Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
 		menu.clear();
     	
+		/*
         menu.add(1, ABOUT_ID, 0, this.getString(R.string.about)).setIcon(android.R.drawable.ic_menu_info_details);
         menu.add(2, MENU_ID, 0, this.getString(R.string.preferences)).setIcon(android.R.drawable.ic_menu_preferences);
-        
+        */
         return true;
     }
     
-    public boolean onOptionsItemSelected(MenuItem item) {
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
     	switch (item.getItemId()) {
     		
     		case ABOUT_ID:
+    			//Intent a = new Intent(this, About.class);
+    			//startActivity(a);
     			return(true);
 
     		case MENU_ID:

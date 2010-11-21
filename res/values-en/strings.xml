@@ -1,10 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, gichtl!</string>
-    <string name="app_name">Gichtl</string>
+
+	<!-- General -->
+    <string name="app_name">Gouty</string>
     <string name="details_title">Details</string>
-    <string name="ListThem_title">Übersicht</string>
-    <string name="preferences_title">Optionen</string>
-    <string name="title">Gichtl</string>
+    <string name="preferences_title">Options</string>
+    <string name="title">Gouty</string>
+    <string name="ListThem_title">ListThem</string>
+    <string name="nothing_found">Nothing found!</string>
+    <string name="in_a"></string>
+    <string name="contains">g contain about </string>
+    <string name="mg_of_uricAcid">mg of uric acid</string>
+    <string name="uricAcid_in_100g">Uric acid in 100g:</string>
     
+    <!-- Start -->
+    <string name="meat">Meat</string>
+    <string name="fish">Fish</string>
+    <string name="fruit">Fruit</string>
+    <string name="vegetable">Vegetables</string>
+    <string name="beverage">Beverage</string>
+    <string name="misc">Misc</string>
+    
+    <!-- About -->
+    <string name="about_title">About</string>
+    
+    
+
+    <!-- Menu -->
+    <string name="about">Info</string>
+    <string name="preferences">Preferences</string>
+    
+    
+    <!-- Preferences -->
+    <string name="title_pref_lang">Language</string>
+    <string name="title_pref_select_lang">Choose Language</string>
+    <string name="pref_show_in_lang">Show items in spcific language</string>
+    
+    <string name="title_pref_inet">Internet</string>
+    	<string name="allow_analytics">Allow Analytics</string>
+    	<string name="allow_analytics_detail">Allow the collection of anonymized usage data</string>
+    
+    	<string name="allow_ads">Advertisment</string>
+    	<string name="allow_ads_detail">Allow Advertisments</string>
+
 </resources>

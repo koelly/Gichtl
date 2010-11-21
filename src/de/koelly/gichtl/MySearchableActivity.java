@@ -20,12 +20,17 @@ package de.koelly.gichtl;
  * 
  */
 
+
+import java.util.Locale;
+
 import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -35,6 +40,30 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class MySearchableActivity extends ListActivity{
+	
+	//TODO Put it in extra class
+	public String getLanguageColumnsName(){
+	      SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+	      String lang = prefs.getString("language", "auto");
+	      String result = "name_en";
+	      
+	      	      
+	      if (lang.equalsIgnoreCase("german")){
+	    	  result =  "name";
+	      } else if(lang.equalsIgnoreCase("english")){
+	    	  result =  "name_en";
+	      } else if(lang.equalsIgnoreCase("auto")){
+	    	  Locale lang_code = Locale.getDefault();
+	    	  if(lang_code.getCountry().equalsIgnoreCase("de")){
+	    		  result =  "name";
+	    	  } 
+	      }
+	      return result;
+		
+	}
+	
+	
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.listthem);
@@ -44,9 +73,11 @@ public class MySearchableActivity extends ListActivity{
 	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 	      String query = intent.getStringExtra(SearchManager.QUERY);
 	     
+	      String NAME_COLUMN = getLanguageColumnsName();
+	      
 	      DataBaseHelper dbHelper = new DataBaseHelper(this);
 	      SQLiteDatabase db = dbHelper.getReadableDatabase();
-	      Cursor cursor = db.rawQuery("SELECT * FROM food WHERE name LIKE \"%" + query + "%\"" , null);
+	      Cursor cursor = db.rawQuery("SELECT "+ NAME_COLUMN +" FROM food WHERE "+ NAME_COLUMN +" LIKE \"%" + query + "%\"" , null);
 	      
 	      
 	      cursor.moveToFirst();
@@ -57,9 +88,9 @@ public class MySearchableActivity extends ListActivity{
 
 	      if (cursor.getCount() > 0){
 		      do{
-		    	  String name = cursor.getString(2);
-		    	  String category = cursor.getString(1);
-		    	  tmp[i] = category;
+		    	  String name = cursor.getString(0);
+		    	  //String category = cursor.getString(1);
+		    	  //tmp[i] = category;
 		    	  results[i++] = name; 
 		      } while (cursor.moveToNext());
 
@@ -68,7 +99,7 @@ public class MySearchableActivity extends ListActivity{
 		      lv1.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, results));
 
 	      } else {
-	    	  Toast toast = Toast.makeText(this, "Nichts gefunden!", Toast.LENGTH_LONG);
+	    	  Toast toast = Toast.makeText(this, this.getString(R.string.nothing_found), Toast.LENGTH_LONG);
 	    	  toast.show();
 	      }
 	      ListView lv = getListView();
@@ -76,7 +107,8 @@ public class MySearchableActivity extends ListActivity{
 	      cursor.close();	      
 	      
 	      lv.setOnItemClickListener(new OnItemClickListener() {
-	          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+	          @Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 	        	  String name = (String) ((TextView) view).getText();
       	  
 	        	  	
