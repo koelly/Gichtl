@@ -144,10 +144,10 @@ public class Gichtl extends Activity implements OnClickListener {
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		menu.clear();
     	
-		/*
+		
         menu.add(1, ABOUT_ID, 0, this.getString(R.string.about)).setIcon(android.R.drawable.ic_menu_info_details);
         menu.add(2, MENU_ID, 0, this.getString(R.string.preferences)).setIcon(android.R.drawable.ic_menu_preferences);
-        */
+        
         return true;
     }
     
